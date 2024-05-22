@@ -1,0 +1,39 @@
+.comment-item{
+    background-color: rgb(69, 69, 69);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.person-and-date{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.person-name{
+    color: white;
+}
+
+.comment-item-title{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.comment-item-icon{
+    font-size: 40px;
+}
+
+.comment-date{
+    font-size: 13px;
+    color: rgb(24, 179, 24);
+}
+
+.comment-content{
+    color: white;
+}
+
+.comment-item-icon{
+    color: white;
+}

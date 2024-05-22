@@ -1,0 +1,36 @@
+
+.about-img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.about-me-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-shadow-bg {
+  position: relative;
+}
+
+.testimonial-item{
+  color: white;
+}
+
+.progress-bar-wrap div{
+  background-color: rgb(64, 155, 64);
+}
+
+li{
+  color: white;
+}
+
+.about-text{
+  color: white;
+}
+
+.count-box p{
+  color: white;
+}
+

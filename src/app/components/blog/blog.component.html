@@ -1,0 +1,45 @@
+<div>
+  <div class="navbar-wrapper">
+    <app-navbar></app-navbar>
+  </div>
+  <section id="blog" class="blog extracted-page">
+    <div class="container">
+      <div class="section-title">
+        <h2>I write too</h2>
+        <p>Blog</p>
+      </div>
+
+      <div class="row">
+        <div class="blog-search-inner">
+          <input placeholder="Search my blog" class="blog-search-input" />
+          <div class="filters">
+            <div class="filter-item">
+              <span>All</span>
+            </div>
+            <div class="filter-item">
+              <span>Life Experiences</span>
+            </div>
+            <div class="filter-item">
+              <span>Technology</span>
+            </div>
+            <div class="filter-item">
+              <span>Professions</span>
+            </div>
+            <div class="filter-item">
+              <span>Work life</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="row blog-items-container">
+        <div class="blog-items-inner" *ngIf="blogPosts">
+          <app-blog-card
+            *ngFor="let post of blogPosts"
+            [blogItem]="post"
+          ></app-blog-card>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

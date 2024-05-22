@@ -1,0 +1,14 @@
+<nav id="navbar" class="navbar">
+  <ul [class.show-mobile-menu]="menuExpanded" [@slideInOut]="menuState" [class.hide-mobile-menu]="!menuExpanded" id="navigation-menu">
+    <li  *ngFor="let item of navbarMenus; let i = index">
+      <a
+        [ngClass]="{ active: selectedLinkIndex === i }"
+        (click)="selectLink(i, item.route)"
+        class="nav-link"
+        
+        >{{ item.name }}</a
+      >
+    </li>
+  </ul>
+  <i class="bi bi-list mobile-nav-toggle" [ngClass]="{'bi bi-list': !menuExpanded}" [ngClass]="{'bi bi-x': menuExpanded}" (click)="toggleClicked()"></i>
+</nav>

@@ -1,0 +1,35 @@
+<div class="wrapper" *ngIf="blogItem != undefined">
+  <div
+    class="blog-card-wrapper"
+    (click)="navigateToBlogDetail(blogItem.sys.id)"
+  >
+    <div class="block-card-inner">
+      <img
+        [src]="blogItem.fields.featuredImage.fields.file.url"
+        class="blog-card-image"
+      />
+      <div class="blog-card-content">
+        <span class="card-title">{{ blogItem.fields.title }}</span>
+        <p class="card-description">
+          {{ blogItem.fields.summary }}
+        </p>
+        <div class="blog-footer">
+          <div class="posted-date">
+            <a href="#" class="twitter date-icon"
+              ><i class="bi bi-calendar2-week card-icon"></i
+            ></a>
+            <span>{{ blogItem.fields.updatedDate | date : "medium" }}</span>
+          </div>
+          <div class="likes-and-comments">
+            <div class="likes-container">
+              <a href="#" class="twitter"
+                ><i class="bi bi-person card-footer-icon"></i
+              ></a>
+              <span class="span-likes-text">{{ blogItem.fields.author }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

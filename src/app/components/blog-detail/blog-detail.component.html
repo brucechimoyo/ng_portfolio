@@ -1,0 +1,54 @@
+<div *ngIf="blogItem != null || blogItem != undefined">
+  <div class="navbar-wrapper">
+    <app-navbar></app-navbar>
+  </div>
+  <section id="blog" class="blog extracted-page">
+    <div class="container">
+      <div class="section-title">
+        <h2>Blog title</h2>
+        <p>{{ blogItem.fields.title }}</p>
+        <hr />
+        <div class="author-and-socials">
+          <div class="author-name-and-date">
+            <a href="#" class="twitter blog-icons"
+              ><i class="bi bi-person"></i
+            ></a>
+            <div class="name-and-date-text">
+              <span class="author-name">Bruce Chimoyo</span>
+              <span class="blog-date">23 September 2024</span>
+            </div>
+          </div>
+          <div class="contact-icons">
+            <a href="#" class="twitter blog-social-icon"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a href="#" class="twitter blog-social-icon"
+              ><i class="bi bi-twitter"></i
+            ></a>
+            <a href="#" class="twitter blog-social-icon"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+            <a href="#" class="twitter blog-social-icon"
+              ><i class="bi bi-reddit"></i
+            ></a>
+            <a href="#" class="twitter blog-social-icon"
+              ><i class="bi bi-github"></i
+            ></a>
+            <a href="#" class="twitter blog-social-icon"
+              ><i class="bi bi-pinterest"></i
+            ></a>
+          </div>
+        </div>
+        <hr />
+      </div>
+
+      <div class="row">
+        <div class="blog-content-inner-row">
+          <div class="safe-content-markup" [innerHTML]="safeContent"></div>
+        </div>
+        <hr />
+        <app-comments [commentData]="comments" [blogId]="blogId"></app-comments>
+      </div>
+    </div>
+  </section>
+</div>

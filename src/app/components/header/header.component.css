@@ -1,0 +1,36 @@
+.home-navigation-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.homepage-name {
+  font-size: 2.95rem !important;
+  line-height: 1.8;
+  color: white;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.navbar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centered-intro {
+  text-align: center;
+}
+
+.intro-wrapper {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

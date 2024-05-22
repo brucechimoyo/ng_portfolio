@@ -1,0 +1,46 @@
+<div class="comments-wrapper">
+  <div class="comments-input-section">
+    <div class="comments-title">
+      <span class="comments-title">Leave a comment</span>
+    </div>
+    <form [formGroup]="commentsForm" class="comment-form">
+      <div class="form-group mt-3">
+        <textarea
+          formControlName="comment"
+          class="form-control"
+          name="message"
+          rows="5"
+          placeholder="Message"
+          required
+        ></textarea>
+      </div>
+    </form>
+    <div class="submit-wrapper">
+      <button type="submit" (click)="postComment()" class="download-resume-button comment-button">
+        Submit
+      </button>
+    </div>
+  </div>
+  <div class="comments-listing-section">
+    <div class="listing-title">
+      <span class="listing-title-text">Recent Comments</span>
+    </div>
+    <div
+      class="listing-items"
+      *ngIf="
+        commentData != undefined && commentData.length > 0;
+        else noComments
+      "
+    >
+      <app-comment-item
+        *ngFor="let comment of commentData"
+        [comment]="comment"
+      ></app-comment-item>
+    </div>
+    <ng-template #noComments>
+      <div class="no-comments-wrapper">
+        <span class="no-comments-text"> NO COMMENTS YET... </span>
+      </div>
+    </ng-template>
+  </div>
+</div>

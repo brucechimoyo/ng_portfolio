@@ -1,0 +1,72 @@
+.ngx-editor-toolbar .ngx-editor-btn {
+  color: #ff5733;
+  background-color: green;
+}
+
+button svg {
+  color: green !important;
+}
+
+button .NgxEditor__MenuItem--Icon {
+  color: blue;
+  background-color: green;
+}
+
+.form-control {
+  width: 75%;
+}
+
+.comments-input-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.comment-button {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.submit-wrapper {
+  margin: 10px 0px;
+}
+
+.mt-3 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 565px) {
+
+  .form-control{
+    width: 100%;
+  }
+}
+
+.listing-title{
+  margin-bottom: 10px;
+  color: white;
+}
+
+.comment-form{
+  width: 100%;
+}
+
+hr{
+  color: rgb(233, 233, 233);
+}
+
+.no-comments-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-comments-text{
+  color: white;
+  text-justify: center;
+  margin-top: 20px;
+}

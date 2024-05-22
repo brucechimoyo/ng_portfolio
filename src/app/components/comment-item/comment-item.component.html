@@ -1,0 +1,15 @@
+<div *ngIf="comment">
+    <hr/>
+    <div class="comment-item">
+        <div class="comment-item-title">
+            <i class="bi bi-person comment-item-icon"></i>
+            <div class="person-and-date">
+                <span class="person-name">{{comment.author}}</span>
+                <span class="comment-date">{{comment.date | date:'medium'}}</span>
+            </div>
+        </div>
+        <div class="comment-content">
+            <p>{{comment.content}}</p>
+        </div>
+    </div>
+</div>
