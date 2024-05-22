@@ -87,12 +87,10 @@ export class BlogDetailComponent implements OnInit {
       next: (value) => {
         this.comments = value
         this.closeDialog();
-        this.toastr.success('Comments loaded successfully');
       },
       error: (err) => {
         this.closeDialog();
-        console.log(err.message);
-        this.toastr.error(err);
+        this.toastr.error("Failed to load comments");
       },
     });
   }
