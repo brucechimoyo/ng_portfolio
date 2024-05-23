@@ -21,14 +21,14 @@
             </div>
           </div> -->
     
-          <div class="row portfolio-container">
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="row portfolio-container" *ngIf="projects.length > 0">
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app" *ngFor="let project of projects">
               <div class="portfolio-wrap">
                 <div class="card-background">
                   <div class="card-icon">
-                    <img src="assets/img/portfolio/fingerprint-scan.gif" alt="" class="card-img">
+                    <img [src]="project.fields.iconImage.fields.file.url" alt="" class="card-img">
                   </div>
-                  <h5>Biometric ATM</h5>
+                  <h5>{{project.fields.name}}</h5>
                   <div class="card-technologies">
                     <i class='bx bxl-angular tech-icon'></i>
                     <i class='bx bxl-python tech-icon'></i>
@@ -37,136 +37,10 @@
                   </div>
                 </div>
                 <div class="portfolio-info">
-                  <p>IoT</p>
+                  <p>{{project.fields.projectCategory.fields.name}}</p>
                   <div class="portfolio-links">
-                    <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i
-                        class="bx bx-plus"></i></a>
-                    <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                      class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-              <div class="portfolio-wrap">
-                <div class="card-background">
-                  <div class="card-icon">
-                    <img src="assets/img/portfolio/barcode.gif" alt="" class="card-img">
-                  </div>
-                  <h5>Smart Car Park</h5>
-                  <div class="card-technologies">
-                    <i class='bx bxs-microchip tech-icon'></i>
-                    <i class='bx bxl-flask tech-icon' ></i>
-                    <i class='bx bxl-angular tech-icon'></i>
-                    <i class='bx bxl-postgresql tech-icon'></i>
-                  </div>
-                </div>
-                <div class="portfolio-info">
-                  <p>IoT</p>
-                  <div class="portfolio-links">
-                    <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i
-                        class="bx bx-plus"></i></a>
-                    <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                      class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-              <div class="portfolio-wrap">
-                <div class="card-background">
-                  <div class="card-icon">
-                    <img src="assets/img/portfolio/consultation.gif" alt="" class="card-img">
-                  </div>
-                  <h5>TapMedik</h5>
-                  <div class="card-technologies">
-                    <i class='bx bxl-angular tech-icon'></i>
-                    <i class='bx bxl-flutter tech-icon' ></i>
-                    <i class='bx bxl-spring-boot tech-icon' ></i>
-                    <i class='bx bxl-postgresql tech-icon'></i>
-                  </div>
-                </div>
-                <div class="portfolio-info">
-                  <p>Web</p>
-                  <div class="portfolio-links">
-                    <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i
-                        class="bx bx-plus"></i></a>
-                    <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                      class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-              <div class="portfolio-wrap">
-                <div class="card-background">
-                  <div class="card-icon">
-                    <img src="assets/img/portfolio/way.gif" alt="" class="card-img">
-                  </div>
-                  <h5>Taxi Hailing App</h5>
-                  <div class="card-technologies">
-                    <i class='bx bxl-angular tech-icon'></i>
-                    <i class='bx bxl-flutter tech-icon' ></i>
-                    <i class='bx bxl-nodejs tech-icon' ></i>
-                    <i class='bx bxl-mongodb tech-icon' ></i>
-                  </div>
-                </div>
-                <div class="portfolio-info">
-                  <p>Mobile</p>
-                  <div class="portfolio-links">
-                    <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i
-                        class="bx bx-plus"></i></a>
-                    <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                      class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-              <div class="portfolio-wrap">
-                <div class="card-background">
-                  <div class="card-icon">
-                    <img src="assets/img/portfolio/lms.gif" alt="" class="card-img">
-                  </div>
-                  <h5>LMS Leave Management</h5>
-                  <div class="card-technologies">
-                    <i class='bx bxl-angular tech-icon'></i>
-                    <i class='bx bxl-django tech-icon' ></i>
-                    <i class='bx bxl-postgresql tech-icon'></i>
-                  </div>
-                </div>
-                <div class="portfolio-info">
-                  <p>Web</p>
-                  <div class="portfolio-links">
-                    <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i
-                        class="bx bx-plus"></i></a>
-                    <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                      class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-              <div class="portfolio-wrap">
-                <div class="card-background">
-                  <div class="card-icon">
-                    <img src="assets/img/portfolio/primesure.gif" alt="" class="card-img">
-                  </div>
-                  <h5>Primesure Insurance System</h5>
-                  <div class="card-technologies">
-                    <i class='bx bxl-angular tech-icon'></i>
-                    <i class='bx bxl-java tech-icon'></i>
-                    <i class='bx bxl-spring-boot tech-icon' ></i>
-                    <i class='bx bxl-postgresql tech-icon'></i>
-                  </div>
-                </div>
-                <div class="portfolio-info">
-                  <p>Web</p>
-                  <div class="portfolio-links">
-                    <a data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i
-                        class="bx bx-plus"></i></a>
-                    <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
-                      class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                    <a (click)="openDetailModal(project.sys.id)" data-gallery="portfolioDetailsGallery" data-glightbox="type: external"
+                      class="portfolio-details-lightbox cursor-link" title="Project Details"><i class="bx bx-link"></i></a>
                   </div>
                 </div>
               </div>

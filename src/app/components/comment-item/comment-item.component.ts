@@ -11,7 +11,6 @@ export class CommentItemComponent {
   comment!: any;
 
   ngOnInit(): void {
-    console.log(this.comment);
   }
 }
 export { Comment };

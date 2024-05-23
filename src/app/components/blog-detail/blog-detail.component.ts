@@ -59,12 +59,12 @@ export class BlogDetailComponent implements OnInit {
   loadBlogPost(blogId: string): void {
     this.openModal();
     this.contentfulService.getBlogEntry(blogId).subscribe((entry: any) => {
-      console.log(entry);
       this.blogItem = entry.items[0];
+      console.log(this.blogItem);
       this.safeContent = this.sanitizer.bypassSecurityTrustHtml(
         documentToHtmlString(entry.items[0].fields.content, this.options)
       );
-      this.loadBlogComments(blogId);
+      //this.loadBlogComments(blogId);
       this.closeDialog();
     });
     this.closeDialog();

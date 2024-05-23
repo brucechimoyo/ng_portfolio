@@ -9,24 +9,12 @@
         <p>Blog</p>
       </div>
 
-      <div class="row">
+      <div class="row" *ngIf="blogCategories !=undefined || blogCategories != null">
         <div class="blog-search-inner">
           <input placeholder="Search my blog" class="blog-search-input" />
           <div class="filters">
-            <div class="filter-item">
-              <span>All</span>
-            </div>
-            <div class="filter-item">
-              <span>Life Experiences</span>
-            </div>
-            <div class="filter-item">
-              <span>Technology</span>
-            </div>
-            <div class="filter-item">
-              <span>Professions</span>
-            </div>
-            <div class="filter-item">
-              <span>Work life</span>
+            <div (click)="filterBlogs(category)" *ngFor="let category of blogCategories" class="filter-item">
+              <span>{{toTitleCase(category)}}</span>
             </div>
           </div>
         </div>

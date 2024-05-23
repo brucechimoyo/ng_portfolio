@@ -1,3 +1,7 @@
 .portfolio-wrap{
     color: white;
 }
+
+.cursor-link{
+    cursor: pointer;
+}

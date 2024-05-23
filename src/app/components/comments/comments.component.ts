@@ -31,14 +31,12 @@ export class CommentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeCommentsForm();
-    console.log(this.commentData);
   }
 
   initializeCommentsForm(): void {
     this.commentsForm = this.fb.group({
       comment: ['', Validators.required],
     });
-    console.log(this.commentsForm);
   }
 
   openModal(): void {
@@ -57,7 +55,6 @@ export class CommentsComponent implements OnInit {
       this.commentsForm.value.comment,
       this.blogId
     );
-    console.log(postBody);
     this.postBlogComment(postBody)
   }
 
@@ -70,7 +67,6 @@ export class CommentsComponent implements OnInit {
       },
       error: (err) => {
         this.closeModal();
-        console.log(err);
         this.toastr.error("Failed to post comment", 'Error');
       },
     });

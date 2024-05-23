@@ -18,12 +18,6 @@
   flex-direction: column;
 }
 
-.navbar-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .centered-intro {
   text-align: center;
 }

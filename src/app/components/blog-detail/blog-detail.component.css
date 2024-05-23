@@ -49,3 +49,21 @@
 .no-comments-text{
   color: white;
 }
+
+.warning p{
+  color: white;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+.warning{
+  padding: 8px 8px;
+  margin: 8px 0px;
+  background-color: green;
+  border-radius: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

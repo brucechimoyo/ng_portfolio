@@ -9,4 +9,11 @@ export class ResumeComponent {
   ngOnInit(){
     AOS.init();
   }
+
+  downloadCV(){
+    const link = document.createElement('a');
+    link.href = 'assets/bruce_chimoyo_cv.pdf';
+    link.download = 'bruce_chimoyo_cv.pdf';
+    link.click();
+  }
 }

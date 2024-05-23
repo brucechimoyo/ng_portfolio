@@ -17,7 +17,8 @@ export class ContentfulService {
   private blogsUrl: string = `https://cdn.contentful.com/spaces/${environment.contentful.space}/environments/master/entries?access_token=${environment.contentful.accessToken}&content_type=${environment.blogsContentTypeId}`;
   private skillUrl: string = `https://cdn.contentful.com/spaces/${environment.contentful.space}/environments/master/entries?access_token=${environment.contentful.accessToken}&content_type=${environment.skillContentTypeId}`;
   private testimonialUrl: string = `https://cdn.contentful.com/spaces/${environment.contentful.space}/environments/master/entries?access_token=${environment.contentful.accessToken}&content_type=${environment.testimonialContentTypeId}`;
-
+  private projectUrl: string = `https://cdn.contentful.com/spaces/${environment.contentful.space}/environments/master/entries?access_token=${environment.contentful.accessToken}&content_type=${environment.projectContentTypeId}`;
+  private blogCategoryUrl: string = `https://cdn.contentful.com/spaces/${environment.contentful.space}/environments/master/entries?access_token=${environment.contentful.accessToken}&content_type=${environment.blogsCategoryTypeId}`;
 
   // BLOG SERVICE METHODS
   getAllBlogEntries() {
@@ -58,7 +59,34 @@ export class ContentfulService {
   // TESTIMONIAL SERVICE METHODS
   getAllTestimonialEntries() {
     return from(
-      this.client.getEntries({ content_type: environment.testimonialContentTypeId })
+      this.client.getEntries({
+        content_type: environment.testimonialContentTypeId,
+      })
+    );
+  }
+
+  //PORTFOLIO SERVICE METHODS
+  getAllProjectEntries() {
+    return from(
+      this.client.getEntries({ content_type: environment.projectContentTypeId })
+    );
+  }
+
+  getProjectEntry(id: string) {
+    return from(
+      this.client.getEntries({
+        content_type: environment.projectContentTypeId,
+        'sys.id': id,
+      })
+    );
+  }
+
+  //BLOG CATEGORY SERVICE METHODS
+  getAllBlogCategoryEntries() {
+    return from(
+      this.client.getEntries({
+        content_type: environment.blogsCategoryTypeId,
+      })
     );
   }
 }

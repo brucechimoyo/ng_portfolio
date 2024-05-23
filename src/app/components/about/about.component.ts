@@ -41,7 +41,6 @@ export class AboutComponent {
     this.contentfulService.getAllSkillEntries().subscribe({
       next: (data) => {
         this.skills = data.items;
-        console.log(this.skills);
         this.closeModal();
       },
       error: (error) => {
@@ -58,10 +57,8 @@ export class AboutComponent {
     this.openModal();
     this.contentfulService.getAllTestimonialEntries().subscribe({
       next: (data) => {
-        console.log(data.items);
         this.testimonials = data.items;
         this.currentTestimonial = this.testimonials[0];
-        console.log(this.currentTestimonial.fields.author+"Current Testimonial");
         this.closeModal();
       },
       error: (error) => {

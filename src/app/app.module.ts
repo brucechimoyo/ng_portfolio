@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ProgressLoaderComponent } from './components/progress-loader/progress-loader.component';
 import { ToastrModule } from 'ngx-toastr';
+import { ProjectDetailComponent } from './components/project-detail/project-detail.component';
 
 @NgModule({
   declarations: [
@@ -41,13 +42,14 @@ import { ToastrModule } from 'ngx-toastr';
     CommentsComponent,
     CommentItemComponent,
     ProgressLoaderComponent,
+    ProjectDetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgxTypedWriterModule,
     HttpClientModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({positionClass: 'toast-top-center', preventDuplicates: true}),
     ModalModule.forRoot(),
     FormsModule,
     BrowserAnimationsModule,

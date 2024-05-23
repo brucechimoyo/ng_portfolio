@@ -35,6 +35,8 @@
 .filter-item {
   background-color: green;
   margin: 6px 8px;
+  cursor: pointer;
+  color: white;
   border-radius: 15px;
   padding: 4px 20px;
 }

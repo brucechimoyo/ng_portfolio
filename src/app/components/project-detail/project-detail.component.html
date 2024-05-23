@@ -1,0 +1,20 @@
+<div class="project-detail-wrapper" *ngIf="project">
+  <div class="project-detail-inner">
+    <img [src]="project.fields.iconImage.fields.file.url" />
+    <div class="detail-title">
+        {{project.fields.name}}
+    </div>
+    <div class="detail-links">
+        <div class="link-container">
+            <a href="#" class="detail-link">{{project.fields.githubLink}}</a>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div [innerHTML]="safeContent" class="content scrollable-div">
+    </div>
+    <div class="divider"></div>
+    <div class="actions">
+        <button (click)="bsModalRef.hide()" type="submit" class="download-resume-button close-button">Close &nbsp;<i class="bi bi-power"></i></button>
+    </div>
+  </div>
+</div>

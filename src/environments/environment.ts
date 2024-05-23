@@ -6,7 +6,10 @@ export const environment = {
   },
   backend_url: 'http://127.0.0.1:3000/',
   blogsContentTypeId: 'blogPost',
+  blogsCategoryTypeId: 'blogPostCategory',
   skillContentTypeId: 'skill',
   skillCategoryContentTypeId: 'skillCategory',
-  testimonialContentTypeId: 'testimonial'
+  testimonialContentTypeId: 'testimonial',
+  projectContentTypeId: 'project',
+  projectCategoryContentTypeId: 'projectCategory',
 };
