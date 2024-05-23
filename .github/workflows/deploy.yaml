@@ -30,5 +30,5 @@ jobs:
         server: ${{ secrets.FTP_HOST }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: dist/ng_portfolio/browser  # Adjust this path to match your built Angular app directory
-        server-dir: /public_html  # Adjust this path if your hosting structure is different
+        local-dir: dist/ng_portfolio/browser/  # Adjust this path to match your built Angular app directory
+        server-dir: /public_html/  # Adjust this path if your hosting structure is different
