@@ -26,6 +26,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ProgressLoaderComponent } from './components/progress-loader/progress-loader.component';
 import { ToastrModule } from 'ngx-toastr';
 import { ProjectDetailComponent } from './components/project-detail/project-detail.component';
+import { TruncatePipe } from './pipes/truncate.pipe';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ProjectDetailComponent } from './components/project-detail/project-deta
     CommentItemComponent,
     ProgressLoaderComponent,
     ProjectDetailComponent,
+    TruncatePipe,
   ],
   imports: [
     BrowserModule,

@@ -25,7 +25,6 @@ export class BlogComponent {
   ngOnInit() {
     AOS.init();
     this.loadBlogCategories();
-    this.loadBlogPosts();
   }
 
   openModal(): void {
@@ -59,6 +58,7 @@ export class BlogComponent {
       next: (value) => {
         this.blogCategories = value.items.map((item) => item.fields['name']);
         this.blogCategories = [...new Set(this.blogCategories)];
+        this.loadBlogPosts();
         this.closeDialog();
       },
       error: (err) => {

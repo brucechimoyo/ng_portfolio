@@ -4,7 +4,7 @@
   background-color: rgb(73, 73, 73);
 }
 
-img{
+img {
   width: 50px;
   height: 50px;
   border-radius: 15px;
@@ -73,9 +73,16 @@ a {
 }
 
 .scrollable-div {
-  height: 200px; /* Set the desired height of the div */
-  overflow-y: scroll; /* Add vertical scrolling */
-  overflow-x: hidden; /* Hide horizontal scrolling */
+  height: 200px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+}
+
+.scrollable-div::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
 
 @media (min-width: 981px) {

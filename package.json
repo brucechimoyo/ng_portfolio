@@ -24,6 +24,7 @@
     "contentful": "^10.10.0",
     "ng-bootstrap": "^0.46.0",
     "ng-count-up-js": "^1.1.1",
+    "ng-portfolio": "file:",
     "ngx-bootstrap": "^12.0.0",
     "ngx-contentful-rich-text": "^0.9.0",
     "ngx-editor": "^17.5.4",
