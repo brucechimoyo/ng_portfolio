@@ -5,7 +5,7 @@
 }
 
 .homepage-name {
-  font-size: 2.95rem !important;
+  font-size: 2.5rem !important;
   line-height: 1.8;
   color: white;
 }
@@ -22,9 +22,22 @@
   text-align: center;
 }
 
+.typewriter-text{
+  font-size: 1.35rem;
+  color: rgb(1, 190, 45) !important;
+}
+
+.introduction-text{
+  font-size: 1rem;
+  color: rgb(190, 190, 190);
+}
+
 .intro-wrapper {
   height: 90px;
+  padding: 1.5rem;
+  gap: 1.45rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }

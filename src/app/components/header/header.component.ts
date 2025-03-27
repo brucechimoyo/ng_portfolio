@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import AOS from 'aos';
 import { ContentfulService } from '../../services/contentful.service';
+import { mySpecialties } from '../../constants/specialties';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -9,6 +10,7 @@ import { ContentfulService } from '../../services/contentful.service';
 export class HeaderComponent {
   constructor(private contentfulService: ContentfulService) { }
   
+  specialties: string[] = mySpecialties;
 
   ngOnInit(){
     AOS.init();

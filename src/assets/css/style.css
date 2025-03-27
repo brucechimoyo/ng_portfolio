@@ -11,9 +11,12 @@
 --------------------------------------------------------------*/
 @import '~ngx-toastr/toastr';
 
+*{
+  font-family: 'Poppins', sans-serif !important;
+}
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #040404;
   color: #fff;
   position: relative;
