@@ -1,0 +1,18 @@
+<div class="blog-search-inner">
+  <app-skeleton 
+    width="200px" 
+    height="40px" 
+    type="title" 
+    [borderRadius]="'20px'" 
+    [animation]="true" 
+    style="margin-bottom: 8px;"></app-skeleton>
+  <div class="filters">
+    <app-skeleton 
+      *ngFor="let item of [1,2,3,4]" 
+      width="80px" 
+      height="30px" 
+      [borderRadius]="'15px'" 
+      [animation]="true" 
+      style="margin-right: 4px; margin-bottom: 4px; display: inline-block;"></app-skeleton>
+  </div>
+</div> 

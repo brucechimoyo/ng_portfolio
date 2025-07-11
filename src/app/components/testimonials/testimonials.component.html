@@ -1,0 +1,42 @@
+<div class="testimonials container">
+  <div class="section-title">
+    <h2>Testimonials</h2>
+  </div>
+
+  <!-- Skeleton Loading -->
+  <app-testimonial-skeleton *ngIf="isLoading"></app-testimonial-skeleton>
+
+  <!-- Actual Content -->
+  <div *ngIf="!isLoading && testimonials.length > 0 && testimonials != undefined" class="testimonials-center-container">
+    <div class="carousel-outer">
+      <div
+        class="testimonial-card-glass"
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event)"
+      >
+        <div class="avatar-wrapper">
+          <img [src]="testimonials[currentIndex].fields.avatar.fields.file.url" class="testimonial-img-glass" alt="" />
+        </div>
+        <div class="testimonial-content">
+          <i class="bx bxs-quote-alt-left quote-icon-left animated"></i>
+          <p>{{ testimonials[currentIndex].fields.message }}</p>
+          <i class="bx bxs-quote-alt-right quote-icon-right animated"></i>
+          <div class="author-info">
+            <h3>{{ testimonials[currentIndex].fields.author }}</h3>
+            <h4>{{ testimonials[currentIndex].fields.title }}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-arrows-row">
+        <button class="carousel-arrow left" (click)="previousTestimonial()">&#8592;</button>
+        <button class="carousel-arrow right" (click)="nextTestimonial()">&#8594;</button>
+      </div>
+      <div class="carousel-dots">
+        <span *ngFor="let t of testimonials; let i = index" 
+              [class.active]="i === currentIndex"
+              (click)="currentIndex = i">
+        </span>
+      </div>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,32 @@
+<div class="blog-items-inner row">
+  <div class="col-lg-4 col-md-6" *ngFor="let item of skeletonItems">
+    <div class="wrapper">
+      <div class="blog-card-wrapper">
+        <div class="block-card-inner">
+          <!-- Image skeleton matching exact blog card image dimensions -->
+          <div class="blog-card-image skeleton-image"></div>
+          <div class="blog-card-content">
+            <!-- Title skeleton matching card-title class -->
+            <div class="skeleton-text card-title-skeleton"></div>
+            <!-- Description skeleton matching card-description -->
+            <div class="skeleton-text description-skeleton"></div>
+            <div class="skeleton-text description-skeleton"></div>
+            <div class="skeleton-text description-skeleton"></div>
+            <div class="blog-footer">
+              <!-- Date skeleton matching posted-date -->
+              <div class="posted-date">
+                <div class="skeleton-text date-skeleton"></div>
+              </div>
+              <!-- Author skeleton matching likes-container -->
+              <div class="likes-and-comments">
+                <div class="likes-container">
+                  <div class="skeleton-text author-skeleton"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

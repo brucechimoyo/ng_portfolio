@@ -1,26 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import AOS from 'aos';
 import { ContentfulService } from '../../services/contentful.service';
 import { CurrentProjectService } from '../../services/current-project.service';
 import { ToastrService } from 'ngx-toastr';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { ProgressLoaderComponent } from '../progress-loader/progress-loader.component';
 import { ProjectDetailComponent } from '../project-detail/project-detail.component';
+
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PortfolioComponent {
+export class PortfolioComponent implements OnInit {
   projects: any[] = [];
-  bsLoadingModalRef!: BsModalRef;
   bsDetailModalRef!: BsModalRef;
+  isLoading: boolean = true;
 
   constructor(
     private contentfulService: ContentfulService,
     private toastr: ToastrService,
     private bsModalService: BsModalService,
-    private currentProjectIdService: CurrentProjectService
+    private currentProjectIdService: CurrentProjectService,
+    private cdr: ChangeDetectorRef // <-- Inject ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -28,29 +30,24 @@ export class PortfolioComponent {
     this.getAllPortfolioEntries();
   }
 
+  trackByProjectId(index: number, project: any): string {
+    return project.sys.id;
+  }
+
   getAllPortfolioEntries() {
-    this.openLoadingModal();
+    this.isLoading = true;
     return this.contentfulService.getAllProjectEntries().subscribe({
       next: (value: any) => {
         this.projects = value.items;
-        this.closeLoadingModal();
+        this.isLoading = false;
+        this.cdr.markForCheck(); // <-- Ensure view updates
       },
       error: (err: any) => {
         this.toastr.error('Failed to fetch projects', 'Error');
-        this.closeLoadingModal();
+        this.isLoading = false;
+        this.cdr.markForCheck(); // <-- Ensure view updates
       },
     });
-  }
-
-  openLoadingModal(): void {
-    this.bsLoadingModalRef = this.bsModalService.show(ProgressLoaderComponent, {
-      ignoreBackdropClick: true,
-      keyboard: false,
-    });
-  }
-
-  closeLoadingModal(): void {
-    this.bsLoadingModalRef.hide();
   }
 
   openDetailModal(id: string): void {

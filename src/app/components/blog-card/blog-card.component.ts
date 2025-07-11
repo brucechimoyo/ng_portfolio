@@ -1,6 +1,6 @@
 import { CurrentBlogIdService } from './../../services/current-blog-id.service';
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ContentfulService } from '../../services/contentful.service';
 
@@ -8,6 +8,7 @@ import { ContentfulService } from '../../services/contentful.service';
   selector: 'app-blog-card',
   templateUrl: './blog-card.component.html',
   styleUrl: './blog-card.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BlogCardComponent {
 

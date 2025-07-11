@@ -9,7 +9,13 @@
         <p>Blog</p>
       </div>
 
-      <div class="row" *ngIf="blogCategories !=undefined || blogCategories != null">
+      <!-- Category Filters Skeleton -->
+      <div class="row" *ngIf="isLoadingCategories">
+        <app-blog-search-skeleton></app-blog-search-skeleton>
+      </div>
+
+      <!-- Actual Category Filters -->
+      <div class="row" *ngIf="!isLoadingCategories && blogCategories !=undefined || blogCategories != null">
         <div class="blog-search-inner">
           <input placeholder="Search my blog" class="blog-search-input" />
           <div class="filters">
@@ -20,10 +26,17 @@
         </div>
       </div>
       <hr />
-      <div class="row blog-items-container">
-        <div class="blog-items-inner" *ngIf="blogPosts">
+      
+      <!-- Blog Posts Skeleton -->
+      <div class="row blog-items-container" *ngIf="isLoading">
+        <app-blog-skeleton></app-blog-skeleton>
+      </div>
+
+      <!-- Actual Blog Posts -->
+      <div class="row blog-items-container" *ngIf="!isLoading && blogPosts">
+        <div class="blog-items-inner">
           <app-blog-card
-            *ngFor="let post of blogPosts"
+            *ngFor="let post of blogPosts; trackBy: trackByBlogId"
             [blogItem]="post"
           ></app-blog-card>
         </div>

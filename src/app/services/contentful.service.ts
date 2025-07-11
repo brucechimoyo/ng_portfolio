@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { createClient, Entry } from 'contentful';
 import { environment } from '../../environments/environment';
 import { from, Observable } from 'rxjs';
+import { CacheService } from './cache.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ContentfulService {
-  constructor() {}
+  constructor(private cacheService: CacheService) {}
 
   private client = createClient({
     space: environment.contentful.space,
@@ -21,72 +22,112 @@ export class ContentfulService {
   private blogCategoryUrl: string = `https://cdn.contentful.com/spaces/${environment.contentful.space}/environments/master/entries?access_token=${environment.contentful.accessToken}&content_type=${environment.blogsCategoryTypeId}`;
 
   // BLOG SERVICE METHODS
-  getAllBlogEntries() {
-    return from(
+  getAllBlogEntries(): Observable<any> {
+    const cacheKey = 'all_blog_entries';
+    const observable = from(
       this.client.getEntries({ content_type: environment.blogsContentTypeId })
     );
+    return this.cacheService.cacheObservable(cacheKey, observable);
   }
 
-  getBlogEntry(id: string) {
-    return from(
+  getBlogEntry(id: string): Observable<any> {
+    const cacheKey = `blog_entry_${id}`;
+    const observable = from(
       this.client.getEntries({
         content_type: environment.blogsContentTypeId,
         'sys.id': id,
       })
     );
+    return this.cacheService.cacheObservable(cacheKey, observable);
   }
 
   getRichTextDocument(id: any): Observable<Entry<any>> {
-    return from(this.client.getEntry(id));
+    const cacheKey = `rich_text_${id}`;
+    const observable = from(this.client.getEntry(id));
+    return this.cacheService.cacheObservable(cacheKey, observable);
   }
 
   // SKILL SERVICE METHODS
-  getAllSkillEntries() {
-    return from(
+  getAllSkillEntries(): Observable<any> {
+    const cacheKey = 'all_skill_entries';
+    const observable = from(
       this.client.getEntries({ content_type: environment.skillContentTypeId })
     );
+    return this.cacheService.cacheObservable(cacheKey, observable);
   }
 
-  getSkillEntry(id: string) {
-    return from(
+  getSkillEntry(id: string): Observable<any> {
+    const cacheKey = `skill_entry_${id}`;
+    const observable = from(
       this.client.getEntries({
         content_type: environment.skillContentTypeId,
         'sys.id': id,
       })
     );
+    return this.cacheService.cacheObservable(cacheKey, observable);
   }
 
   // TESTIMONIAL SERVICE METHODS
-  getAllTestimonialEntries() {
-    return from(
+  getAllTestimonialEntries(): Observable<any> {
+    const cacheKey = 'all_testimonial_entries';
+    const observable = from(
       this.client.getEntries({
         content_type: environment.testimonialContentTypeId,
       })
     );
+    return this.cacheService.cacheObservable(cacheKey, observable);
   }
 
   //PORTFOLIO SERVICE METHODS
-  getAllProjectEntries() {
-    return from(
+  getAllProjectEntries(): Observable<any> {
+    const cacheKey = 'all_project_entries';
+    const observable = from(
       this.client.getEntries({ content_type: environment.projectContentTypeId })
     );
+    return this.cacheService.cacheObservable(cacheKey, observable);
   }
 
-  getProjectEntry(id: string) {
-    return from(
+  getProjectEntry(id: string): Observable<any> {
+    const cacheKey = `project_entry_${id}`;
+    const observable = from(
       this.client.getEntries({
         content_type: environment.projectContentTypeId,
         'sys.id': id,
       })
     );
+    return this.cacheService.cacheObservable(cacheKey, observable);
   }
 
   //BLOG CATEGORY SERVICE METHODS
-  getAllBlogCategoryEntries() {
-    return from(
+  getAllBlogCategoryEntries(): Observable<any> {
+    const cacheKey = 'all_blog_category_entries';
+    const observable = from(
       this.client.getEntries({
         content_type: environment.blogsCategoryTypeId,
       })
     );
+    return this.cacheService.cacheObservable(cacheKey, observable);
+  }
+
+  // ABOUT STATS SERVICE METHOD
+  getAboutStats(): Observable<any> {
+    const cacheKey = 'about_stats';
+    const observable = from(
+      this.client.getEntries({ content_type: environment.aboutStatsContentTypeId })
+    );
+    return this.cacheService.cacheObservable(cacheKey, observable);
+  }
+
+  // Clear cache methods for when data needs to be refreshed
+  clearCache(): void {
+    this.cacheService.clear();
+  }
+
+  clearBlogCache(): void {
+    this.cacheService.delete('all_blog_entries');
+  }
+
+  clearProjectCache(): void {
+    this.cacheService.delete('all_project_entries');
   }
 }

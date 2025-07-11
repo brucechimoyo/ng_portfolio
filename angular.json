@@ -36,7 +36,16 @@
               "./node_modules/swiper/swiper-bundle.css",
               "src/styles.css"
             ],
-            "scripts": ["node_modules/aos/dist/aos.js"]
+            "scripts": ["node_modules/aos/dist/aos.js"],
+            "optimization": {
+              "scripts": true,
+              "styles": {
+                "minify": true,
+                "inlineCritical": false
+              },
+              "fonts": true
+            },
+            "sourceMap": false
           },
           "configurations": {
             "production": {
@@ -53,11 +62,19 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                },
+                "fonts": true
+              },
+              "sourceMap": false
             },
             "development": {
               "optimization": false,
-              "extractLicenses": false,
               "sourceMap": true
             }
           },
@@ -89,6 +106,27 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.css"],
             "scripts": []
+          }
+        },
+        "analyze": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/ng_portfolio",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "tsconfig.app.json",
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": [
+              "node_modules/aos/dist/aos.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "./node_modules/swiper/swiper-bundle.css",
+              "src/styles.css"
+            ],
+            "scripts": ["node_modules/aos/dist/aos.js"],
+            "sourceMap": true,
+            "statsJson": true
           }
         }
       }

@@ -1,6 +1,6 @@
 
 .about-img {
-  width: 25rem;
+  width: 22rem;
   max-height: 100%;
 }
 
@@ -32,5 +32,75 @@ li{
 
 .count-box p{
   color: white;
+}
+
+.interests {
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+/* Skeleton Loading Styles */
+.skeleton-text {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.2) 75%);
+  background-size: 200% 100%;
+  border-radius: 4px;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.skeleton-progress {
+  margin-bottom: 20px;
+}
+
+.skeleton-skill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.skeleton-percentage {
+  width: 40px;
+  height: 16px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.2) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeleton-progress-bar {
+  height: 8px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.2) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.about-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 12px;
+  margin-bottom: 2.5rem; /* Add spacing between sections */
+  min-height: unset;      /* Remove forced tall sections */
+}
+
+@media (max-width: 600px) {
+  .about-section {
+    padding: 0 8px;
+    margin-bottom: 2rem;
+  }
 }
 

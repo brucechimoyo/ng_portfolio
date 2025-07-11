@@ -1,25 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import AOS from 'aos';
 import BlogItem from '../../interfaces/BlogItem';
 import { ContentfulService } from '../../services/contentful.service';
 import { Observable } from 'rxjs';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { ProgressLoaderComponent } from '../progress-loader/progress-loader.component';
 
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BlogComponent {
+export class BlogComponent implements OnInit {
   blogPosts$!: Observable<any>;
-  bsModalRef!: BsModalRef;
   blogPosts!: any[];
   blogCategories!: any[];
+  isLoading: boolean = true;
+  isLoadingCategories: boolean = true;
 
   constructor(
     private contentfulService: ContentfulService,
-    private modalService: BsModalService
+    private cdr: ChangeDetectorRef // <-- Inject ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -27,45 +27,44 @@ export class BlogComponent {
     this.loadBlogCategories();
   }
 
-  openModal(): void {
-    this.bsModalRef = this.modalService.show(ProgressLoaderComponent, {
-      ignoreBackdropClick: true,
-      keyboard: false,
-    });
+  trackByBlogId(index: number, blog: any): string {
+    return blog.sys.id;
   }
 
-  closeDialog(): void {
-    this.bsModalRef.hide();
+  trackByCategory(index: number, category: string): string {
+    return category;
   }
 
   loadBlogPosts(): void {
-    this.openModal();
+    this.isLoading = true;
     this.contentfulService.getAllBlogEntries().subscribe({
       next: (value) => {
         this.blogPosts = value.items;
-        this.closeDialog();
+        this.isLoading = false;
+        this.cdr.markForCheck(); // <-- Ensure view updates
       },
       error: (err) => {
-        this.closeDialog();
+        this.isLoading = false;
+        this.cdr.markForCheck(); // <-- Ensure view updates
       },
     });
-    this.closeDialog();
   }
 
   loadBlogCategories() {
-    this.openModal();
+    this.isLoadingCategories = true;
     this.contentfulService.getAllBlogCategoryEntries().subscribe({
       next: (value) => {
-        this.blogCategories = value.items.map((item) => item.fields['name']);
+        this.blogCategories = value.items.map((item: any) => item.fields['name']);
         this.blogCategories = [...new Set(this.blogCategories)];
         this.loadBlogPosts();
-        this.closeDialog();
+        this.isLoadingCategories = false;
+        this.cdr.markForCheck(); // <-- Ensure view updates
       },
       error: (err) => {
-        this.closeDialog();
+        this.isLoadingCategories = false;
+        this.cdr.markForCheck(); // <-- Ensure view updates
       },
     });
-    this.closeDialog();
   }
 
   toTitleCase(str: string): string {
@@ -79,19 +78,20 @@ export class BlogComponent {
   }
 
   filterBlogs(category: string): void {
-    this.openModal();
+    this.isLoading = true;
     this.contentfulService.getAllBlogEntries().subscribe({
       next: (value) => {
         this.blogPosts = value.items;
         this.blogPosts = this.blogPosts.filter(
           (item) => item.fields.category.fields.name === category
         );
-        this.closeDialog();
+        this.isLoading = false;
+        this.cdr.markForCheck(); // <-- Ensure view updates
       },
       error: (err) => {
-        this.closeDialog();
+        this.isLoading = false;
+        this.cdr.markForCheck(); // <-- Ensure view updates
       },
     });
-    this.closeDialog();
   }
 }

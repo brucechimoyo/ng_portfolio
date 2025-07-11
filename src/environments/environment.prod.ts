@@ -1,10 +1,10 @@
 export const environment = {
-  production: false,
+  production: true,
   contentful: {
     space: 'efujdahng13j',
     accessToken: 'KXwbSFQEhG1fpPEFqKjg6UxLF7FgQ_7Vt8m1lQmS2w8',
   },
-  backend_url: 'http://127.0.0.1:3000/',
+  backend_url: 'https://your-production-backend.com/',
   blogsContentTypeId: 'blogPost',
   blogsCategoryTypeId: 'blogPostCategory',
   skillContentTypeId: 'skill',
@@ -12,5 +12,4 @@ export const environment = {
   testimonialContentTypeId: 'testimonial',
   projectContentTypeId: 'project',
   projectCategoryContentTypeId: 'projectCategory',
-  aboutStatsContentTypeId: 'aboutStats',
-};
+}; 

@@ -21,8 +21,14 @@
             </div>
           </div> -->
     
-          <div class="row portfolio-container" *ngIf="projects.length > 0">
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app" *ngFor="let project of projects">
+          <!-- Portfolio Skeleton Loading -->
+          <div class="row portfolio-container" *ngIf="isLoading">
+            <app-portfolio-skeleton></app-portfolio-skeleton>
+          </div>
+
+          <!-- Actual Portfolio Items -->
+          <div class="row portfolio-container" *ngIf="!isLoading && projects.length > 0">
+            <div class="col-lg-4 col-md-6 portfolio-item filter-app" *ngFor="let project of projects; trackBy: trackByProjectId">
               <div class="portfolio-wrap">
                 <div class="card-background">
                   <div class="card-icon">
