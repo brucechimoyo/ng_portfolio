@@ -32,3 +32,13 @@
         justify-content: center;
     }
 }
+
+@media (max-width: 991px) {
+  .mobile-nav-toggle {
+    display: block !important;
+    z-index: 2000 !important;
+    position: fixed !important;
+    right: 20px !important;
+    top: 20px !important;
+  }
+}

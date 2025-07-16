@@ -1,344 +1,69 @@
-<div class="about-shadow-bg">
+<div>
   <div class="navbar-wrapper">
     <app-navbar></app-navbar>
   </div>
-  <div id="about" class="about extracted-page">
-    <div class="about-section">
-      <div class="about-me container">
-        <div class="section-title">
-          <h2>About</h2>
-          <p>Learn more about me</p>
+  <section id="about" class="about extracted-page">
+    <div class="container">
+      <div class="section-title">
+        <h2>About</h2>
+        <p> about me</p>
+      </div>
+      <div class="about-hero">
+        <div class="about-hero-img">
+          <img [src]="'assets/img/bruce.jpeg'" alt="Bruce Chimoyo" class="profile-img" (load)="onImageLoad()" [class.fade-in]="isImageLoaded" />
         </div>
-
-        <div class="row about-me-row">
-          <div class="col-lg-4" data-aos="fade-right">
-            <img src="assets/img/dev.png" class="about-img" alt="" />
-          </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Software Engineer &amp; AI Enthusiast</h3>
-            <p class="fst-italic about-text">
-              A technology patriot, devoted to providing solutions to technical
-              problems arising on the African soil.
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li>
-                    <i class="bi bi-chevron-right"></i> <strong>Birthday:</strong>
-                    <span>22 September 1998</span>
-                  </li>
-                  <li>
-                    <i class="bi bi-chevron-right"></i> <strong>Phone:</strong>
-                    <span>+263 778275503</span>
-                  </li>
-                  <li>
-                    <i class="bi bi-chevron-right"></i> <strong>City:</strong>
-                    <span>Harare, Zimbabwe</span>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li>
-                    <i class="bi bi-chevron-right"></i> <strong>Age:</strong>
-                    <span>25</span>
-                  </li>
-                  <li>
-                    <i class="bi bi-chevron-right"></i> <strong>Degree:</strong>
-                    <span>BSc in Computer Science</span>
-                  </li>
-                  <li>
-                    <i class="bi bi-chevron-right"></i>
-                    <strong>PhEmailone:</strong>
-                    <span>chimoyo.takura&#64;yahoo.com</span>
-                  </li>
-                </ul>
-              </div>
+        <div class="about-hero-content">
+          <h1 class="about-name">Bruce Takura Chimoyo</h1>
+          <h2 class="about-title">Software Engineer & AI Enthusiast</h2>
+          <blockquote class="about-quote">
+            "With a heart for technology and a vision for Africa, I am committed to engineering solutions that drive meaningful change."
+          </blockquote>
+        </div>
+      </div>
+      <div class="about-info-grid">
+        <div class="info-card" *ngFor="let info of personalInfo">
+          <span class="info-label">{{info.label}}</span>
+          <span class="info-value">{{info.value}}</span>
+        </div>
+      </div>
+      <div class="about-bio">
+        <p>
+          Driven by a relentless curiosity and a passion for technology, I am a Software Engineer and AI Enthusiast dedicated to building impactful digital solutions. My expertise spans full-stack development, artificial intelligence, and innovative problem-solving, allowing me to transform complex challenges into elegant, scalable products.
+        </p>
+        <p>
+          With a proven track record of delivering high-quality software, I thrive in dynamic environments where creativity and collaboration fuel success. I am committed to continuous learning, staying at the forefront of emerging technologies to ensure my work not only meets but exceeds industry standards.
+        </p>
+        <p>
+          I believe in the power of technology to create positive change—whether it’s optimizing business processes, enhancing user experiences, or solving real-world problems. My goal is to contribute to forward-thinking teams that value excellence, integrity, and a shared vision for the future.
+        </p>
+      </div>
+      <div class="about-stats" *ngIf="aboutStats.length">
+        <div class="stat-card" *ngFor="let stat of aboutStats">
+          <div class="stat-value">{{stat.statCount}}</div>
+          <div class="stat-label">{{stat.aspect}}</div>
+        </div>
+      </div>
+      <div class="about-skills">
+        <h4 class="about-subtitle">Skills</h4>
+        <div class="skills-list">
+          <div class="skill-bar" *ngFor="let skill of skills">
+            <span class="skill-name">{{skill.fields.name}}</span>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar" [style.width]="skill.fields.percentage + '%'" ></div>
             </div>
-            <p class="about-text">
-              Problem-solving is not just a skill; it's my passion. I relish the
-              opportunity to dissect complex challenges, applying a creative
-              mindset to engineer elegant and efficient solutions. I believe in
-              pushing boundaries and breaking through technological barriers to
-              deliver products that redefine industry standards.
-            </p>
+            <span class="skill-percent">{{skill.fields.percentage}}%</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-interests">
+        <h4 class="about-subtitle">Interests</h4>
+        <div class="interests-grid">
+          <div class="interest-card" *ngFor="let interest of interests">
+            <i [class]="interest.icon"></i>
+            <span>{{interest.label}}</span>
           </div>
         </div>
       </div>
     </div>
-    <!-- End About Me -->
-
-    <!-- ======= Counts ======= -->
-    <div class="about-section">
-      <div class="counts container">
-        <div class="row" *ngIf="isLoadingStats">
-          <div class="col-lg-3 col-md-6 mt-5 mt-md-0" *ngFor="let i of [1,2,3,4]">
-            <div class="count-box">
-              <div class="skeleton-icon" style="width:40px;height:40px;border-radius:50%;margin-bottom:12px;"></div>
-              <div class="skeleton-text" style="width:60%;height:24px;margin:0 auto 8px;"></div>
-              <div class="skeleton-text" style="width:80%;height:16px;margin:0 auto;"></div>
-            </div>
-          </div>
-        </div>
-        <div class="row" *ngIf="!isLoadingStats && aboutStats.length">
-          <div class="col-lg-3 col-md-6 mt-5 mt-md-0" *ngFor="let stat of aboutStats">
-            <div class="count-box">
-              <i class="bi bi-briefcase"></i>
-              <span class="purecounter">{{ stat.statCount }}</span>
-              <p>{{ stat.aspect }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End Counts -->
-
-    <!-- ======= Skills  ======= -->
-    <div class="about-section">
-      <div class="skills container">
-        <div class="section-title">
-          <h2>Skills</h2>
-        </div>
-
-        <!-- Skills Skeleton Loading -->
-        <div class="row skills-content" *ngIf="isLoadingSkills">
-          <div class="col-lg-6 stack-container">
-            <span class="row-title">Front-End Development</span>
-            <div class="progress skeleton-progress">
-              <span class="skill skeleton-skill">
-                <div class="skeleton-text" style="width: 60%; height: 16px;"></div>
-                <i class="val skeleton-percentage"></i>
-              </span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar skeleton-progress-bar"></div>
-              </div>
-            </div>
-            <div class="progress skeleton-progress">
-              <span class="skill skeleton-skill">
-                <div class="skeleton-text" style="width: 70%; height: 16px;"></div>
-                <i class="val skeleton-percentage"></i>
-              </span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar skeleton-progress-bar"></div>
-              </div>
-            </div>
-            <div class="progress skeleton-progress">
-              <span class="skill skeleton-skill">
-                <div class="skeleton-text" style="width: 50%; height: 16px;"></div>
-                <i class="val skeleton-percentage"></i>
-              </span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar skeleton-progress-bar"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 stack-container">
-            <span class="row-title">Backend-End Development</span>
-            <div class="progress skeleton-progress">
-              <span class="skill skeleton-skill">
-                <div class="skeleton-text" style="width: 65%; height: 16px;"></div>
-                <i class="val skeleton-percentage"></i>
-              </span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar skeleton-progress-bar"></div>
-              </div>
-            </div>
-            <div class="progress skeleton-progress">
-              <span class="skill skeleton-skill">
-                <div class="skeleton-text" style="width: 55%; height: 16px;"></div>
-                <i class="val skeleton-percentage"></i>
-              </span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar skeleton-progress-bar"></div>
-              </div>
-            </div>
-            <div class="progress skeleton-progress">
-              <span class="skill skeleton-skill">
-                <div class="skeleton-text" style="width: 75%; height: 16px;"></div>
-                <i class="val skeleton-percentage"></i>
-              </span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar skeleton-progress-bar"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Actual Skills Content -->
-        <div class="row skills-content" *ngIf="!isLoadingSkills">
-          <div class="col-lg-6 stack-container">
-            <span class="row-title">Front-End Development</span>
-
-            <ng-container *ngFor="let skill of skills">
-              <div
-                class="progress"
-                *ngIf="
-                  skill.fields.category.fields.name === 'FRONTEND DEVELOPMENT'
-                "
-              >
-                <span class="skill"
-                  >{{ skill.fields.name }}
-                  <i class="val">{{ skill.fields.percentage }}%</i></span
-                >
-                <div class="progress-bar-wrap">
-                  <div
-                    [style.width]="skill.fields.percentage + '%'"
-                    class="progress-bar"
-                    role="progressbar"
-                    aria-valuenow="90"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            </ng-container>
-          </div>
-
-          <div class="col-lg-6 stack-container">
-            <span class="row-title">Backend-End Development</span>
-            <ng-container *ngFor="let skill of skills">
-              <div
-                class="progress"
-                *ngIf="
-                  skill.fields.category.fields.name === 'BACKEND DEVELOPMENT'
-                "
-              >
-                <span class="skill"
-                  >{{ skill.fields.name }}
-                  <i class="val">{{ skill.fields.percentage }}%</i></span
-                >
-                <div class="progress-bar-wrap">
-                  <div
-                    [style.width]="skill.fields.percentage + '%'"
-                    class="progress-bar"
-                    role="progressbar"
-                    aria-valuenow="90"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            </ng-container>
-          </div>
-
-          <div class="col-lg-6 stack-container">
-            <span class="row-title">Project Management</span>
-            <ng-container *ngFor="let skill of skills">
-              <div
-                class="progress"
-                *ngIf="skill.fields.category.fields.name === 'PROJECT MANAGEMENT'"
-              >
-                <span class="skill"
-                  >{{ skill.fields.name }}
-                  <i class="val">{{ skill.fields.percentage }}%</i></span
-                >
-                <div class="progress-bar-wrap">
-                  <div
-                    [style.width]="skill.fields.percentage + '%'"
-                    class="progress-bar"
-                    role="progressbar"
-                    aria-valuenow="90"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            </ng-container>
-          </div>
-
-          <div class="col-lg-6 stack-container">
-            <span class="row-title">Database Management and Operations</span>
-            <ng-container *ngFor="let skill of skills">
-              <div
-                class="progress"
-                *ngIf="
-                  skill.fields.category.fields.name === 'DATABASE MANAGEMENT'
-                "
-              >
-                <span class="skill"
-                  >{{ skill.fields.name }}
-                  <i class="val">{{ skill.fields.percentage }}%</i></span
-                >
-                <div class="progress-bar-wrap">
-                  <div
-                    class="progress-bar"
-                    [style.width]="skill.fields.percentage + '%'"
-                    role="progressbar"
-                    aria-valuenow="90"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            </ng-container>
-          </div>
-          <div class="col-lg-6 stack-container">
-            <span class="row-title">CI / CD</span>
-            <ng-container *ngFor="let skill of skills">
-              <div
-                class="progress"
-                *ngIf="skill.fields.category.fields.name === 'CI / CD'"
-              >
-                <span class="skill"
-                  >{{ skill.fields.name }}
-                  <i class="val">{{ skill.fields.percentage }}%</i></span
-                >
-                <div class="progress-bar-wrap">
-                  <div
-                    class="progress-bar"
-                    [style.width]="skill.fields.percentage + '%'"
-                    role="progressbar"
-                    aria-valuenow="90"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            </ng-container>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End Skills -->
-
-    <!-- ======= Interests ======= -->
-    <div class="about-section">
-      <div class="interests container">
-        <div class="section-title">
-          <h2>Interests</h2>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-3 col-md-4">
-            <div class="icon-box">
-              <i class="ri-robot-2-line" style="color: #ffbb2c"></i>
-              <h3>IoT and Robotics</h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-            <div class="icon-box">
-              <i class="ri-robot-3-line" style="color: #5578ff"></i>
-              <h3>Artificial Intelligence</h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-            <div class="icon-box">
-              <i class="ri-html5-line" style="color: green"></i>
-              <h3>Web Development</h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-            <div class="icon-box">
-              <i class="ri-smartphone-line" style="color: yellow"></i>
-              <h3>Mobile Development</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- End Interests -->
-
-    <!-- ======= Testimonials ======= -->
-    <app-testimonials></app-testimonials>
-  </div>
+  </section>
 </div>

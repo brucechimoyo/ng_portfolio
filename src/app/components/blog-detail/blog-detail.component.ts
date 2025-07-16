@@ -64,7 +64,7 @@ export class BlogDetailComponent implements OnInit {
       this.safeContent = this.sanitizer.bypassSecurityTrustHtml(
         documentToHtmlString(entry.items[0].fields.content, this.options)
       );
-      //this.loadBlogComments(blogId);
+      this.loadBlogComments(blogId); // Enable loading comments after blog post loads
       this.closeDialog();
     });
     this.closeDialog();

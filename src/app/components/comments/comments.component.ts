@@ -35,6 +35,7 @@ export class CommentsComponent implements OnInit {
 
   initializeCommentsForm(): void {
     this.commentsForm = this.fb.group({
+      name: ['', Validators.required],
       comment: ['', Validators.required],
     });
   }
@@ -53,7 +54,8 @@ export class CommentsComponent implements OnInit {
   postComment(): void {
     let postBody = CommentMapper.mapToCreateComment(
       this.commentsForm.value.comment,
-      this.blogId
+      this.blogId,
+      this.commentsForm.value.name
     );
     this.postBlogComment(postBody)
   }
@@ -64,6 +66,11 @@ export class CommentsComponent implements OnInit {
       next: (value) => {
         this.toastr.success('Comment posted successfully', 'Success');
         this.closeModal();
+        // Immediately update the comments list
+        if (this.commentData) {
+          this.commentData.unshift(value);
+        }
+        this.commentsForm.reset();
       },
       error: (err) => {
         this.closeModal();
